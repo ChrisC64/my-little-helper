@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <action android:id="@+id/action_global_home"
+        app:destination="@+id/mainFragment"/>
+    <action android:id="@+id/action_global_profile"
+        app:destination="@+id/mainFragment"/>
+    <action android:id="@+id/action_global_logs"
+        app:destination="@+id/mainFragment"/>
+    <action android:id="@+id/action_global_baby"
+        app:destination="@+id/mainFragment"/>
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.lunasol.babyhelper.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_userDetail"
+            app:destination="@+id/userDetail"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@+id/mainFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/userDetail"
+        android:name="com.lunasol.babyhelper.ui.data.UserDetail"
+        android:label="UserDetail" />
+    <fragment
+        android:id="@+id/baby_detail"
+        android:name="com.lunasol.babyhelper.ui.data.BabyDetail"
+        android:label="baby_detail_fragment"
+        tools:layout="@layout/baby_detail_fragment" />
+</navigation>

@@ -1,0 +1,57 @@
+*.iml
+.gradle
+/local.properties
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+# Build files
+*.apk
+*.ap_
+*.aab
+
+# Files for ART/Dalvik VM
+*.dex
+
+# Java class files (generated)
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+release/
+
+# Log files
+*.log
+
+# Android Studio Navigation Editor Temp Files
+.navigation/
+
+# Android Studio Captures
+caputres/
+
+# IntelliJ stuff
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+.idea/modules.xml
+.idea/navEditor
+.idea/vcs.xml
+
+# Keystore Files
+*.jks
+*.keystore
+
+# Lint
+lin/intermediates/
+lint/generated
+lint/outputs/
+lint/tmp/
+

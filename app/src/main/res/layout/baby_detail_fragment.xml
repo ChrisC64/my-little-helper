@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="Baby"
+            type="com.lunasol.babyhelper.data.BabyData" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.data.BabyDetail">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image_baby_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/content_desc_image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/text_baby_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text='@{Baby.firstName + " " + Baby.lastName, default="Baby Cutie"}'
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                app:layout_constraintEnd_toEndOf="@+id/image_baby_pic"
+                app:layout_constraintStart_toStartOf="@+id/image_baby_pic"
+                app:layout_constraintTop_toBottomOf="@+id/image_baby_pic" />
+
+            <TextView
+                android:id="@+id/text_baby_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text='@{"Age:" + Baby.age, default="Age: 1"}'
+                app:layout_constraintEnd_toEndOf="@+id/text_baby_name"
+                app:layout_constraintStart_toStartOf="@+id/text_baby_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_baby_name" />
+
+            <TextView
+                android:id="@+id/text_baby_birthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text='@{"Birthday: " + Baby.birthDate, default="Birthday: 00/00/0000}'
+                app:layout_constraintEnd_toEndOf="@+id/text_baby_name"
+                app:layout_constraintStart_toStartOf="@+id/text_baby_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_baby_age" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

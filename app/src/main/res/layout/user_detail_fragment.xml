@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="User"
+            type="com.lunasol.babyhelper.data.User" />
+        <variable
+            name="ViewModel"
+            type="com.lunasol.babyhelper.ui.data.UserDetailViewModel"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.data.UserDetail">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button_set_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/set_image"
+                app:layout_constraintEnd_toEndOf="@+id/image_user"
+                app:layout_constraintStart_toStartOf="@+id/image_user"
+                app:layout_constraintTop_toBottomOf="@+id/image_user" />
+
+            <ImageView
+                android:id="@+id/image_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:contentDescription="@string/content_desc_image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <LinearLayout
+                android:id="@+id/layout_user_details_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/button_set_image"
+                tools:layout_editor_absoluteX="0dp">
+
+                <TextView
+                    android:id="@+id/text_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@{User.firstName + ' ' + User.lastName, default=Jane_Doe}"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:visibility="@{!ViewModel.editing ? View.VISIBLE : View.GONE, default=visible}"/>
+
+                <TextView
+                    android:id="@+id/text_user_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@{User.age, default=21}"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    android:visibility="@{!ViewModel.editing ? View.VISIBLE : View.GONE, default=visible}"/>
+
+                <EditText
+                    android:id="@+id/edit_user_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_first_name"
+                    android:inputType="text"
+                    android:importantForAutofill="no"
+                    android:visibility="@{ViewModel.editing ? View.VISIBLE : View.GONE, default=gone}"/>
+
+                <EditText
+                    android:id="@+id/edit_user_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_last_name"
+                    android:inputType="text"
+                    android:importantForAutofill="no"
+                    android:visibility="@{ViewModel.editing ? View.VISIBLE : View.GONE, default=gone}"/>
+
+                <EditText
+                    android:id="@+id/edit_user_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_age"
+                    android:inputType="numberSigned"
+                    android:importantForAutofill="no"
+                    android:visibility="@{ViewModel.editing ? View.VISIBLE : View.GONE, default=gone}"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:onClick="@{()-> ViewModel.setEditing(!ViewModel.editing)}"
+                android:text="@string/button_edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_user_details_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>
